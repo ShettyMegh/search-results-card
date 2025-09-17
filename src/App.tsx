@@ -1,7 +1,11 @@
-import { useState } from "react";
+import SearchCard from "./feature/search-card/components";
 
 function App() {
-  return <div>Hello</div>;
+  return (
+    <div className="app-container">
+      <SearchCard />
+    </div>
+  );
 }
 
 export default App;

@@ -8,6 +8,7 @@
     "preview": "rspack preview"
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.3.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
