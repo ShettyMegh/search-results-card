@@ -1,8 +1,12 @@
+import { GearIcon } from "@radix-ui/react-icons";
+import { TAB_KEYS, TABS_ITEMS } from "../constants";
 import "../css/search-card.css";
 import SearchRow from "./search-row";
 import { useEffect, useRef, useState } from "react";
+import TabsList from "./tabs-list";
 const SearchCard = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [activeTab, setActiveTab] = useState(TAB_KEYS.ALL);
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -38,9 +42,14 @@ const SearchCard = () => {
         onClearClick={() => setSearchValue("")}
       />
       <div
-        className={`card-body ${searchValue.length ? "card-body-active" : ""}`}
+        className={`card-body ${
+          searchValue.length ? "card-body-active" : "card-body-active"
+        }`}
       >
-        <div className="card-tabs">awdawd</div>
+        <TabsList
+          activeTab={activeTab}
+          onChange={(active) => setActiveTab(active)}
+        />
       </div>
     </div>
   );

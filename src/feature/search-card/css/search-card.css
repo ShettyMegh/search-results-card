@@ -5,7 +5,6 @@
 .card {
   background-color: white;
   border-radius: 12px;
-  padding: 24px;
   color: #010101;
   width: 560px;
 }
@@ -14,6 +13,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 24px;
 }
 
 .card-search__icon {
@@ -21,16 +21,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-input {
-  border: none;
-  outline: none;
-  font-size: 22px;
-  width: 100%;
-}
-
-input::placeholder {
-  color: #a9a9a9;
 }
 
 .card-search__qa {
@@ -70,18 +60,9 @@ input::placeholder {
 
 .card-clear-btn {
   text-decoration: underline;
-  border: none;
-  background-color: transparent;
   padding: 2px 4px;
-  outline: none;
-  transition: all 0.2s ease-in-out;
   border-radius: 4px;
-  cursor: pointer;
   font-weight: 600;
-}
-
-.card-clear-btn:focus-visible {
-  box-shadow: 0px 0px 0px 1px #00a573;
 }
 
 .card-body {
@@ -91,4 +72,53 @@ input::placeholder {
 }
 .card-body-active {
   height: 480px;
+}
+
+.card-tabs {
+  padding: 2px 24px 0;
+  border-bottom: 2px solid #f4f4f4;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 12px;
+  padding: 0 2px;
+}
+
+.tab-item {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 4px 6px;
+  display: flex;
+  color: #7d7d7d;
+  gap: 6px;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-item__chip {
+  height: 100%;
+  background-color: #f2f2f2;
+  font-size: 12px;
+  padding: 2px 6px;
+  line-height: 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #7d7d7d;
+}
+
+.tab-item--active {
+  color: #000;
+  border-color: #000 !important;
+}
+
+.tab-item--settings {
+  margin-left: auto;
+  border: none;
+  margin-bottom: 2px;
+  border-radius: 6px;
+}
+
+.tab-item--settings:hover {
+  background-color: #f1f1f1;
 }
