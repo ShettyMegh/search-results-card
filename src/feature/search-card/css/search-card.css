@@ -231,3 +231,9 @@
 .content__title {
   font-size: 16px;
 }
+
+.skeleton-wrapper {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}

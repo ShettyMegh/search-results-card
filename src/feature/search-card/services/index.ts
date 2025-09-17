@@ -16,6 +16,6 @@ export const getDummyData = async (payload: {
         return condition;
       });
       res(filteredItems);
-    }, 2000);
+    }, 1000);
   });
 };
