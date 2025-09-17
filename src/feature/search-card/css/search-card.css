@@ -4,9 +4,10 @@
 
 .card {
   background-color: white;
-  border-radius: 12px;
+  border-radius: 20px;
   color: #010101;
   width: 560px;
+  box-shadow: 0px 0px 6px 1px #8080804a;
 }
 
 .card-search {
@@ -112,8 +113,24 @@
   border-color: #000 !important;
 }
 
-.tab-item--settings {
+.settings {
+  position: relative;
   margin-left: auto;
+}
+
+.dropdown-container {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #dfdfdf;
+  width: 180px;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0px 0px 6px 1px #8080804a;
+}
+
+.tab-item--settings {
   border: none;
   margin-bottom: 2px;
   border-radius: 6px;
@@ -121,4 +138,47 @@
 
 .tab-item--settings:hover {
   background-color: #f1f1f1;
+}
+
+.tab-container {
+  padding: 24px;
+}
+
+.row-container {
+  display: flex;
+  align-items: center;
+  height: 65px;
+  gap: 12px;
+}
+
+.row-icon {
+  background-color: #f2f2f2;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.content__title {
+  font-weight: 600;
+}
+
+.content__desc {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.desc {
+  color: #727272;
+  font-size: 12px;
+}
+
+.content__dot {
+  width: 4px;
+  height: 4px;
+  background-color: #b9b9b9;
+  border-radius: 100%;
 }

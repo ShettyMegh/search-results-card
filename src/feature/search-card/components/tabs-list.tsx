@@ -1,5 +1,6 @@
 import { GearIcon } from "@radix-ui/react-icons";
 import { TABS_ITEMS } from "../constants";
+import SettingsDropdown from "./settings-dropdown";
 
 const TabsList = ({
   activeTab,
@@ -26,9 +27,7 @@ const TabsList = ({
             </button>
           );
         })}
-        <button className="tab-item tab-item--settings">
-          <GearIcon height={16} width={16} />
-        </button>
+        <SettingsDropdown />
       </div>
     </div>
   );
