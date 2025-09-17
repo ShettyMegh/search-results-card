@@ -15,7 +15,7 @@ const FolderFile = ({ data }: { data: FolderFileType }) => {
       </div>
       <div className="content">
         <div className="content-header">
-          <h4 className="content__title">{data.title}</h4>
+          <h5 className="content__title">{data.title}</h5>
           {isFolder && (
             <p className="content__files">{data.totalFiles} Files</p>
           )}

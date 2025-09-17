@@ -5,9 +5,13 @@ import SettingsDropdown from "./settings-dropdown";
 const TabsList = ({
   activeTab,
   onChange,
+  counts,
 }: {
   activeTab: string;
   onChange: (activeTabs: string) => void;
+  counts: {
+    [key: string]: number;
+  };
 }) => {
   return (
     <div className="card-tabs">
@@ -23,7 +27,7 @@ const TabsList = ({
             >
               {!!Icon && <Icon height={16} width={16} />}
               <p>{curItem.label}</p>
-              <p className="tab-item__chip">2</p>
+              <p className="tab-item__chip">{counts[key]}</p>
             </button>
           );
         })}

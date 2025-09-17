@@ -7,3 +7,10 @@ export type FolderFileType = {
   location: string;
   updated: string;
 };
+
+export type PersonType = {
+  title: string;
+  type: ITEMS_TYPE;
+  isActive: boolean;
+  lastActive: string;
+};

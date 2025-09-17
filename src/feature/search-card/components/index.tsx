@@ -6,26 +6,51 @@ import TabsList from "./tabs-list";
 import FolderFile from "./row-items/folder-file";
 import { getDummyData } from "../services";
 import { LIST_DATA } from "../constants/list-data";
-import { FolderFileType } from "../types";
+import { FolderFileType, PersonType } from "../types";
+import { useDebounce } from "../../../hooks/use-debounce";
+import Person from "./row-items/person";
 const SearchCard = () => {
   const [searchValue, setSearchValue] = useState("");
   const [activeTab, setActiveTab] = useState(TAB_KEYS.ALL);
+  const { debounceValue } = useDebounce({
+    value: searchValue,
+    delay: 1000,
+  });
+  const { debounceValue: debounceActiveTab } = useDebounce({
+    value: activeTab,
+    delay: 300,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [counts, setCounts] = useState<{
+    [key: string]: number;
+  }>({});
   const [results, setResults] = useState<typeof LIST_DATA>([]);
   const ref = useRef<HTMLInputElement>(null);
 
   const handleGetDummyData = async () => {
+    setIsLoading(true);
     try {
-      const res = await getDummyData(searchValue);
+      const res = await getDummyData({
+        search: debounceValue,
+        type: activeTab === TAB_KEYS.ALL ? "" : activeTab,
+      });
+      setCounts({
+        [TAB_KEYS.ALL]: 200,
+        [ITEMS_TYPE.FILE]: 60,
+        [ITEMS_TYPE.FOLDER]: 60,
+        [ITEMS_TYPE.PEOPLE]: 60,
+      });
       console.log({ res });
       setResults(res as typeof LIST_DATA);
     } catch (err) {
       console.error({ err });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
-      console.log(e);
       if (
         (e.key === "s" || e.key === "S") &&
         document.activeElement !== ref.current
@@ -44,7 +69,7 @@ const SearchCard = () => {
 
   useEffect(() => {
     handleGetDummyData();
-  }, [searchValue]);
+  }, [debounceValue, debounceActiveTab]);
 
   return (
     <div className="card">
@@ -64,15 +89,18 @@ const SearchCard = () => {
         <TabsList
           activeTab={activeTab}
           onChange={(active) => setActiveTab(active)}
+          counts={counts}
         />
         <div className="tab-container">
-          {results.map((item) => {
-            const isPeople = item.type === ITEMS_TYPE.PEOPLE;
-            if (isPeople) {
-              return "Hello";
-            }
-            return <FolderFile data={item as FolderFileType} />;
-          })}
+          {isLoading
+            ? "Loading"
+            : results.map((item) => {
+                const isPeople = item.type === ITEMS_TYPE.PEOPLE;
+                if (isPeople) {
+                  return <Person data={item as PersonType} />;
+                }
+                return <FolderFile data={item as FolderFileType} />;
+              })}
         </div>
       </div>
     </div>
